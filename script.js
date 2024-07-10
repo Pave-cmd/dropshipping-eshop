@@ -7,7 +7,7 @@ async function fetchProducts() {
     const apiPassword = 'YOUR_API_PASSWORD';
 
     try {
-        let response = await fetch(`https://${624062103d6447f922e566fd41ab0f57}:${d08bbca230fffdfaf4b74121aa3c7661}@${shopifyDomain}/admin/api/2021-04/products.json`);
+        let response = await fetch(`https://${apiKey}:${apiPassword}@${shopifyDomain}/admin/api/2021-04/products.json`);
         let data = await response.json();
         let products = data.products;
         displayProducts(products);

@@ -2,9 +2,9 @@ let cart = [];
 let totalPrice = 0;
 
 async function fetchProducts() {
-    const shopifyDomain = 'YOUR_SHOPIFY_DOMAIN';
-    const apiKey = 'YOUR_API_KEY';
-    const apiPassword = 'YOUR_API_PASSWORD';
+    const shopifyDomain = 'your-shop-name.myshopify.com';
+    const apiKey = 'e150a6da120d086b6d2a0ada30a66174';
+    const apiPassword = '7e278015ba129b041d80a2f7fc21be73';
 
     try {
         let response = await fetch(`https://${apiKey}:${apiPassword}@${shopifyDomain}/admin/api/2021-04/products.json`);

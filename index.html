@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jednoduchý e-shop s dropshippingem</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Shopify API Test</title>
+  <style>
+    body {
+      background-color: lightblue;
+    }
+  </style>
 </head>
 <body>
-    <h1>Vítejte v našem e-shopu</h1>
+  <h1>Shopify API Test</h1>
+  <div id="product-list"></div>
 
-    <div class="products" id="products">
-        <!-- Produkty budou načítány sem dynamicky -->
-    </div>
+  <script>
+    // Vaše API klíče a doména
+    const apiKey = 'e150a6da120d086b6d2a0ada30a66174';
+    const password = '7e278015ba129b041d80a2f7fc21be73';
+    const shopName = 'fbc3a1-1b.myshopify.com'; // Změňte na svou Shopify doménu
 
-    <div class="cart">
-        <h2>Nákupní košík</h2>
-        <ul id="cartItems">
-            <!-- Zde se dynamicky přidávají položky košíku -->
-        </ul>
-        <p>Celková cena: $<span id="totalPrice">0</span></p>
-    </div>
+    const url = `https://${apiKey}:${password}@${shopName}/admin/api/2023-01/products.json`;
 
-    <script src="script.js"></script>
+    // Fetch dat z Shopify API
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const productList = document.getElementById('product-list');
+        data.products.forEach(product => {
+          const productItem = document.createElement('div');
+          productItem.innerHTML = `<h2>${product.title}</h2><p>${product.body_html}</p>`;
+          productList.appendChild(productItem);
+        });
+      })
+      .catch(error => console.error('Error fetching products:', error));
+  </script>
 </body>
 </html>

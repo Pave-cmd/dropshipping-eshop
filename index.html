@@ -13,23 +13,12 @@
   <div id="product-list"></div>
 
   <script>
-    // Vaše API klíče a doména
-    const apiKey = 'e150a6da120d086b6d2a0ada30a66174';
-    const password = '7e278015ba129b041d80a2f7fc21be73';
-    const shopName = 'fbc3a1-1b.myshopify.com'; // Změňte na svou Shopify doménu
+    // URL vašeho backend serveru na Glitchi
+    const backendUrl = 'https://shopify-backend.glitch.me';
 
-    const url = `https://${apiKey}:${password}@${shopName}/admin/api/2023-01/products.json`;
-
-    // Výpis URL do konzole
-    console.log('Fetching URL:', url);
-
-    // Fetch dat z Shopify API
-    fetch(url)
-      .then(response => {
-        // Výpis response status do konzole
-        console.log('Response status:', response.status);
-        return response.json();
-      })
+    // Fetch dat z backend serveru
+    fetch(backendUrl)
+      .then(response => response.json())
       .then(data => {
         // Výpis dat do konzole
         console.log('Fetched data:', data);
